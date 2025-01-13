@@ -1,0 +1,11 @@
+{
+  "go.inlayHints.constantValues": true,
+  "go.inlayHints.functionTypeParameters": true,
+  "go.formatTool": "gofmt",
+  "go.inferGopath": true,
+  "go.inlayHints.assignVariableTypes": true,
+  "go.inlayHints.compositeLiteralFields": true,
+  "go.inlayHints.compositeLiteralTypes": true,
+  "go.lintTool": "golint",
+  "go.trace.server": "messages"
+}

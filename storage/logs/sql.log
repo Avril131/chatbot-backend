@@ -1,0 +1,67 @@
+
+2025/01/12 12:47:49 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[778.923ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2025/01/12 12:47:50 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[212.989ms] [rows:0] CREATE TABLE "users" ("id" bigserial,"name" text NOT NULL,"mobile" text NOT NULL,"created_at" timestamptz,"updated_at" timestamptz,"deleted_at" timestamptz,PRIMARY KEY ("id"))
+
+2025/01/12 12:47:50 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64
+[191.606ms] [rows:0] CREATE INDEX IF NOT EXISTS "idx_users_deleted_at" ON "users" ("deleted_at")
+
+2025/01/12 12:47:50 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[219.451ms] [rows:0] CREATE INDEX IF NOT EXISTS "idx_users_mobile" ON "users" ("mobile")
+
+2025/01/12 12:47:50 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[204.863ms] [rows:0] COMMENT ON COLUMN "users"."name" IS 'User Name'
+
+2025/01/12 12:47:50 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[200.343ms] [rows:0] COMMENT ON COLUMN "users"."mobile" IS 'User Mobile Phone'
+
+2025/01/12 16:45:19 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[1550.058ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2025/01/12 16:45:20 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[996.463ms] [rows:1] SELECT CURRENT_DATABASE()
+
+2025/01/12 16:45:21 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[473.203ms] [rows:-] SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'chatbot' AND table_schema = CURRENT_SCHEMA() AND table_name = 'users'
+
+2025/01/12 16:45:21 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[313.554ms] [rows:-] SELECT * FROM "users" LIMIT 5
+
+2025/01/12 16:45:22 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[715.542ms] [rows:-] SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'chatbot' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users' AND constraint_type = 'UNIQUE'
+
+2025/01/12 16:45:22 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[515.141ms] [rows:-] SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'chatbot' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'users'
+
+2025/01/12 16:45:23 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[705.426ms] [rows:-] SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'users'
+
+2025/01/12 16:45:23 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[622.087ms] [rows:0] SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/01/12 16:45:24 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[210.984ms] [rows:0] ALTER TABLE "users" ADD "email" text
+
+2025/01/12 16:45:24 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[507.493ms] [rows:1] SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'name') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/01/12 16:45:25 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[610.414ms] [rows:0] ALTER TABLE "users" ADD "picture" text
+
+2025/01/12 16:45:25 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[302.255ms] [rows:0] SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'created_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/01/12 16:45:25 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[306.236ms] [rows:0] SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'updated_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/01/12 16:45:26 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[309.026ms] [rows:0] SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'users' AND column_name = 'deleted_at') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'users' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2025/01/12 16:45:26 /Users/avril/NEU-projects/INFO5100/chatbot/backend/bootstrap/db.go:64 SLOW SQL >= 200ms
+[717.471ms] [rows:1] SELECT count(*) FROM pg_indexes WHERE tablename = 'users' AND indexname = 'idx_users_deleted_at' AND schemaname = CURRENT_SCHEMA()

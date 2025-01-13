@@ -1,0 +1,8 @@
+{"level":"local.info","ts":"[2025-01-12 10:55:49.260]","caller":"backend/main.go:16","msg":"log init success!"}
+[2025-01-12 10:57:15.106]	local.info	backend/main.go:16	log init success!
+[2025-01-12 12:42:08.284]	local.info	backend/main.go:14	log init success!
+[2025-01-12 12:42:08.317]	local.error	bootstrap/db.go:47	sql connect failed, err:	{"err": "failed to connect to `user=avril database=`: /private/tmp/.s.PGSQL.5432 (/private/tmp): failed SASL auth: FATAL: password authentication failed for user \"avril\" (SQLSTATE 28P01)"}
+[2025-01-12 12:45:15.802]	local.info	backend/main.go:14	log init success!
+[2025-01-12 12:45:15.810]	local.error	bootstrap/db.go:49	sql connect failed, err:	{"err": "failed to connect to `user=avril database=`: /private/tmp/.s.PGSQL.5432 (/private/tmp): failed SASL auth: FATAL: password authentication failed for user \"avril\" (SQLSTATE 28P01)"}
+[2025-01-12 12:47:47.883]	local.info	backend/main.go:14	log init success!
+[2025-01-12 16:45:16.502]	local.info	backend/main.go:14	log init success!
