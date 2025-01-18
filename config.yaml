@@ -36,3 +36,7 @@ redis:
   port: 6379
   db: 0
   password:
+openai:
+  secret_key: sk-Gtibhq4mSYPmxD49fkuWZVQnLEHvdDA7giEYuJhNmUYe4PWF
+  max_tokens: 100
+  model: text-davinci-003

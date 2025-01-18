@@ -1,8 +1,8 @@
 package bootstrap
 
 import (
-	"chatbot-backend/global"
 	"chatbot-backend/app/models"
+	"chatbot-backend/global"
 	"fmt"
 	"io"
 	"log"
@@ -34,12 +34,12 @@ func initPostgreSqlGorm() *gorm.DB {
 	}
 
 	dsn := fmt.Sprintf("postgres://%s:%s@%s:%d/%s?sslmode=disable",
-        dbConfig.UserName,
-        dbConfig.Password,
-        dbConfig.Host,
-        dbConfig.Port,
-        dbConfig.Database,
-    )
+		dbConfig.UserName,
+		dbConfig.Password,
+		dbConfig.Host,
+		dbConfig.Port,
+		dbConfig.Database,
+	)
 
 	postgresConfig := postgres.Config{
 		DSN: dsn, // DSN data source name
@@ -63,6 +63,8 @@ func initPostgreSqlGorm() *gorm.DB {
 func initTables(db *gorm.DB) {
 	err := db.AutoMigrate(
 		models.User{},
+		models.Chat{},
+		models.Message{},
 	)
 	if err != nil {
 		global.App.Log.Error("migrate table failed", zap.Any("err", err))

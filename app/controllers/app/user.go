@@ -9,6 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Login use google token to log in
 func Login(c *gin.Context) {
 	var form request.Login
 	if err := c.ShouldBindJSON(&form); err != nil {
@@ -28,20 +29,21 @@ func Login(c *gin.Context) {
 	}
 }
 
+// Logout log out the account
 func Logout(c *gin.Context) {
-    err := services.JwtService.JoinBlackList(c.Keys["token"].(*jwt.Token))
-    if err != nil {
-        response.BusinessFail(c, "failed to logout")
-        return
-    }
-    response.Success(c, nil)
+	err := services.JwtService.JoinBlackList(c.Keys["token"].(*jwt.Token))
+	if err != nil {
+		response.BusinessFail(c, "failed to logout")
+		return
+	}
+	response.Success(c, nil)
 }
 
-
+// Info get user info
 func Info(c *gin.Context) {
 	if user, err := services.UserService.GetUserInfo(c.Keys["id"].(string)); err != nil {
 		response.BusinessFail(c, err.Error())
 	} else {
-        response.Success(c, user)
-    }
+		response.Success(c, user)
+	}
 }

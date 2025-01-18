@@ -18,7 +18,7 @@ func setupRouter() *gin.Engine {
 	router.Use(middleware.Cors())
 
 	apiGroup := router.Group("/api")
-	routes.SetApiGroupRoutes(apiGroup)
+	routes.SetAPIGroupRoutes(apiGroup)
 
 	return router
 }

@@ -5,7 +5,7 @@ import "strconv"
 // User : basic user info
 type User struct {
 	ID
-	GId     string `json:"gid"`
+	GId     string `json:"g_id"`
 	Email   string `json:"email"`
 	Name    string `json:"name" gorm:"not null;comment:User Name"`
 	Picture string `json:"picture"`
